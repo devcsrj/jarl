@@ -9,4 +9,18 @@
 
 ## Installation
 
-TODO
+### OSX
+- Homebrew
+    ```shell script
+    $ brew install devcsrj/homebrew-tap/jarl
+    ```
+
+### Windows
+- Scoop
+    ```shell script
+    $ scoop bucket add devcsrj https://github.com/devcsrj/scoop-bucket
+    $ scoop install jarl
+    ```
+
+### Linux
+- `rpm` and `deb` binaries are available at [releases](https://github.com/devcsrj/jarl/releases)
