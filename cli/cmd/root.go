@@ -19,7 +19,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/atotto/clipboard"
-	"github.com/devcsrj/jarl/jarl"
+	"github.com/devcsrj/jarl"
 	"github.com/gookit/color"
 	"github.com/manifoldco/promptui"
 	"github.com/spf13/cobra"
