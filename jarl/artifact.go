@@ -134,7 +134,7 @@ func (e *Mvnrepository) parseArtifactDetails(r io.Reader) Details {
 	doc.Find("#snippets > div > div > div > table > tbody").Each(func(i int, tbody *goquery.Selection) {
 		// 3.2.x, 3.1.x, etc
 		tbody.Children().Each(func(i int, tr *goquery.Selection) {
-			version := tr.Find("a.vbtn.release").Text()
+			version := tr.Find("a.vbtn").Text()
 			a := tr.Find("a.b.lic")
 			date := tr.Find("td:last-child").Text()
 			versions = append(versions, Version{
