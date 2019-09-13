@@ -31,7 +31,7 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "jarl",
 	Short: "Your trusty 'Jar l'ocator",
-	Long: `Jarl helps you find jar coordinates right from your terminal.
+	Long: `Locate jar coordinates right from your terminal.
 
 Example:
 $ jarl reactor-core
@@ -49,7 +49,7 @@ The ending coordinates is automatically copied to the clipboard.
 		repo.Init("https://mvnrepository.com")
 
 		q := args[0]
-		fmt.Print("\U0001F50E Searching for ")
+		fmt.Print("\U0001F50E  Searching for ")
 		color.Cyan.Printf("'%s'\n", q)
 		results := repo.SearchArtifacts(q, 1)
 		artifact := selectArtifact(results.Artifacts)
@@ -82,8 +82,8 @@ func selectArtifact(artifacts []jarl.Artifact) jarl.Artifact {
 
 	templates := &promptui.SelectTemplates{
 		Label:    "{{ . }}:",
-		Selected: "\U0001F4CD {{ .Value | red | cyan }}",
-		Details: "\U0001F4CD" + `{{ .Group | cyan }}:{{ .Id | cyan }}
+		Selected: "\U0001F4CD  {{ .Value | red | cyan }}",
+		Details: "\U0001F4CD  " + `{{ .Group | cyan }}:{{ .Id | cyan }}
 -------------------------------------
 {{ .Description }}`,
 	}
@@ -107,9 +107,9 @@ func selectVersion(details jarl.Details) jarl.Version {
 
 	templates := &promptui.SelectTemplates{
 		Label:    "{{ . }}:",
-		Active:   "\U0001F4CD {{ .Value | cyan }}",
-		Inactive: "  {{ .Value | cyan }}",
-		Selected: "\U0001F4CD {{ .Value | cyan }}",
+		Active:   "\U0001F4CD  {{ .Value | cyan }}",
+		Inactive: "   {{ .Value | cyan }}",
+		Selected: "\U0001F4CD  {{ .Value | cyan }}",
 		Details: header + `
 {{ "Repository:" | faint }}	{{ .Repository.Name }}
 {{ "Date:" | faint }}	{{ .Date }}
@@ -152,9 +152,9 @@ func selectImportStyle(artifact jarl.Artifact, version jarl.Version) string {
 
 	templates := &promptui.SelectTemplates{
 		Label:    "{{ . }}:",
-		Active:   "\U0001F4CD {{ .Style | cyan }}",
-		Inactive: "  {{ .Style | cyan }}",
-		Selected: "\U0001F4CD {{ .Style | cyan }}",
+		Active:   "\U0001F4CD  {{ .Style | cyan }}",
+		Inactive: "   {{ .Style | cyan }}",
+		Selected: "\U0001F4CD  {{ .Style | cyan }}",
 		Details: `
 {{ .Value | magenta }}`,
 	}
