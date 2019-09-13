@@ -21,6 +21,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"net/url"
 	"strconv"
 )
 
@@ -72,7 +73,8 @@ func (e *Mvnrepository) Init(url string) {
 }
 
 func (e *Mvnrepository) SearchArtifacts(q string, page int) SearchResults {
-	path := fmt.Sprintf("/search?q=%s&p=%d&sort=relevance", q, page)
+	query := url.QueryEscape(q)
+	path := fmt.Sprintf("/search?q=%s&p=%d&sort=relevance", query, page)
 	resp, err := http.Get(e.url + path)
 	if err != nil {
 		log.Fatal(err)
