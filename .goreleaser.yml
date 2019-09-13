@@ -1,0 +1,55 @@
+project_name: jarl
+before:
+  hooks:
+    - go mod tidy
+    - go generate ./...
+builds:
+  - main: ./cli/main.go
+    env:
+      - CGO_ENABLED=0
+archives:
+  - replacements:
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+brews:
+  - github:
+      owner: devcsrj
+      name: homebrew-tap
+    commit_author:
+      name: devcsrj
+      email: devcsrj@apache.org
+    homepage: "https://github.com/devcsrj/jarl"
+    description: "Locate jar coordinates right from your terminal."
+scoop:
+  bucket:
+    owner: devcsrj
+    name: scoop-bucket
+  commit_author:
+    name: devcsrj
+    email: devcsrj@apache.org
+  homepage: "https://github.com/devcsrj/jarl"
+  description: "Locate jar coordinates right from your terminal."
+  license: Apache 2.0
+nfpms:
+  - homepage: "https://github.com/devcsrj/jarl"
+    maintainer: Reijhanniel Jearl Campos <devcsrj@apache.org>
+    description: "Locate jar coordinates right from your terminal."
+    license: Apache 2.0
+    formats:
+      - deb
+      - rpm
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+signs:
+  - artifacts: checksum
