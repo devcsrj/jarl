@@ -19,7 +19,7 @@ import (
 	"testing"
 )
 
-func TestSearch(t *testing.T) {
+func TestMvnrepository_SearchArtifacts(t *testing.T) {
 	repo := new(Mvnrepository)
 	repo.Init("https://mvnrepository.com")
 
@@ -46,7 +46,7 @@ func TestSearch(t *testing.T) {
 	}
 }
 
-func TestGet(t *testing.T) {
+func TestMvnrepository_GetArtifactDetails(t *testing.T) {
 	repo := new(Mvnrepository)
 	repo.Init("https://mvnrepository.com")
 
