@@ -26,6 +26,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"os"
+	"strings"
 )
 
 var cfgFile string
@@ -164,6 +165,10 @@ func selectVersion(details jarl.Details) jarl.Version {
 		Items:     details.Versions,
 		Templates: templates,
 		Size:      4,
+		Searcher: func(input string, index int) bool {
+			return strings.HasPrefix(details.Versions[index].Value, input)
+		},
+		StartInSearchMode: true,
 	}
 
 	i, _, err := prompt.Run()
